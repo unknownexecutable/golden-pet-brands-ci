@@ -8,10 +8,10 @@ export default function MovesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="kicker">Real, press-confirmed, independently verifiable — no speculative "possible launch" signals</p>
+        <p className="kicker">Press-confirmed and independently checkable. No speculative launch rumors.</p>
         <h1 className="text-3xl mt-1">Strategic moves</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
-          A feed of significant, dated, real events — product launches, retail expansions, legal developments — each backed by a named, checkable source.
+          Product launches, retail expansions, legal developments — dated and backed by a named source, not inferred from a pattern.
         </p>
       </div>
       <div className="relative pl-6 border-l-2 border-ink-100 space-y-6">

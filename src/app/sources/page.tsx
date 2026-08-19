@@ -35,8 +35,8 @@ export default function SourcesPage() {
         <p className="kicker">Observability</p>
         <h1 className="text-3xl mt-1">Sources & connectors</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
-          Exactly which channels this build can and cannot pull real data from, per competitor. Nothing here is aspirational — a channel is only marked
-          Connected if this app retrieved real data from it.
+          Exactly which channels we can and can't pull real data from, per competitor. Nothing here is aspirational — a channel is only marked Connected
+          once real data has actually come back from it.
         </p>
       </div>
 
@@ -45,10 +45,9 @@ export default function SourcesPage() {
           <div>
             <h2 className="text-lg">Live re-check</h2>
             <p className="text-sm text-ink-500 mt-1 max-w-xl">
-              Re-fetches every connected brand website right now and reports real HTTP status plus whether the page's content hash changed since the last
-              check. This is a real Tier-0 connectivity/drift check — it does not re-derive structured facts (claims, prices) automatically, since that
-              step uses judgment an LLM call would need to make, and no LLM API key is configured in this environment. Wiring one in is the natural next
-              step (see note below).
+              Re-fetches every connected brand website right now and reports real HTTP status plus whether the page changed since the last check. That's a
+              connectivity and drift check, not a rewrite: turning "this page changed" into a new claim or price takes judgment, so that step stays a
+              deliberate human (or AI-assisted) review rather than something this button does automatically.
             </p>
           </div>
           <button

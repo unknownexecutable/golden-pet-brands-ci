@@ -23,7 +23,7 @@ export default function ProductsPage() {
         <p className="kicker">Every price is either directly verified or explicitly marked unverified</p>
         <h1 className="text-3xl mt-1">Product & price intelligence</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
-          No invented numbers. Where a competitor doesn't publish a fixed price (personalized quizzes, promo-code-only pricing), that's shown honestly rather than guessed.
+          Where a competitor doesn't publish a fixed price — personalized quizzes, promo-code-only pricing — that's marked, not guessed.
         </p>
       </div>
 

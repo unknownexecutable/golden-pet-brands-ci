@@ -8,7 +8,7 @@ export default function BrandsPage() {
       <div>
         <p className="kicker">Golden Pet Brands</p>
         <h1 className="text-3xl mt-1">Brand profiles</h1>
-        <p className="text-ink-500 mt-2 max-w-2xl">Each brand is analyzed independently — different customer, different competitors, different claim territory.</p>
+        <p className="text-ink-500 mt-2 max-w-2xl">Three brands, three customers, three competitive sets. Each gets its own read.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {goldenBrands.map((b) => {

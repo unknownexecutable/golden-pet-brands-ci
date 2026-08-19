@@ -21,7 +21,7 @@ export default function ObservationsPage({ searchParams }: { searchParams: { pri
   return (
     <div className="space-y-6">
       <div>
-        <p className="kicker">Verified, single-point-in-time facts — not a fabricated change feed</p>
+        <p className="kicker">Each one sourced, dated, and scored — a snapshot, not a change feed</p>
         <h1 className="text-3xl mt-1">Observations</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
           Every item here was captured from a live source on the date shown, with a significance score that filters noise from what actually matters.

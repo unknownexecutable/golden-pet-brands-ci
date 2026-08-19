@@ -130,7 +130,7 @@ export function answerQuestion(query: string): AnswerResult {
       answer:
         relevant.length > 0
           ? `Real, confirmed launches/expansions on record:\n\n${relevant.map((m) => `- **${m.title}** (${m.eventDate}): ${m.summary}`).join("\n\n")}`
-          : "No confirmed new product launches are on record yet for tracked competitors — this build only surfaces press-confirmed launches, not speculative sitemap signals.",
+          : "No confirmed new product launches are on record yet for tracked competitors. We only surface press-confirmed launches here, not speculative signals.",
       citations
     };
   }

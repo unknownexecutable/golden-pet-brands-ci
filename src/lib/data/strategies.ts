@@ -92,7 +92,7 @@ export const strategies: Strategy[] = [
       { brandId: "dr-marty", level: "Medium", rationale: "Open Farm's stacked 50%-off freeze-dried offer is a real current price signal in Dr. Marty's exact format." }
     ],
     analystNote:
-      "This is real, current pricing pressure — but calling it \"escalation\" would require a second observation weeks apart to confirm, which this build intentionally does not fabricate. Treat this as a benchmark to re-check, not a confirmed trend."
+      "This is real, current pricing pressure. Calling it an \"escalation\" would take a second observation weeks apart to confirm, and we don't have that yet — treat it as a benchmark to re-check, not a confirmed trend."
   },
   {
     id: "dtc-testing-mass-retail",

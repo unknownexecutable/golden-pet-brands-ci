@@ -14,10 +14,10 @@ export default function TerritoriesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="kicker">Who currently occupies which claim territory — a structural snapshot, not a trend</p>
+        <p className="kicker">Who occupies which claim territory today</p>
         <h1 className="text-3xl mt-1">Market narrative map</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
-          Each territory lists real competitors with real quoted evidence. This reflects today's positioning only — this build does not claim to measure whether a territory is growing or shrinking over time.
+          Real competitors, real quoted evidence, one snapshot in time. No claim about whether a territory is growing or shrinking — that needs a second look, weeks apart.
         </p>
       </div>
       <div className="space-y-5">

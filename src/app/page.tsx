@@ -24,7 +24,7 @@ export default function TodayPage() {
         <p className="mt-2 max-w-3xl text-ink-500 text-[15px] leading-relaxed">
           {high.length} high-priority findings and {moves.length} confirmed strategic moves are on record right now, drawn from{" "}
           {observations.length} verified, live-captured facts across {new Set(observations.map((o) => o.competitorId)).size} tracked competitors.
-          Everything below links back to the exact page and date it was confirmed — this is a snapshot of what's true today, not a fabricated change feed.
+          Everything below links back to the exact page and date it was confirmed.
         </p>
       </section>
 

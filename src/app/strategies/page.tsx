@@ -6,7 +6,7 @@ export default function StrategiesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="kicker">Grounded in today's real, verified positioning — not fabricated trends</p>
+        <p className="kicker">Built from today's verified positioning, not projected trends</p>
         <h1 className="text-3xl mt-1">Strategy library</h1>
         <p className="text-ink-500 mt-2 max-w-2xl">
           Cross-competitor patterns visible in the current dataset. Each one names exactly which competitors show the pattern, with a real quote and source per competitor.

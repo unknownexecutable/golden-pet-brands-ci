@@ -56,7 +56,7 @@ export default function AskPage() {
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <p className="kicker">Grounded retrieval over the verified evidence base — not a general-purpose chatbot</p>
+        <p className="kicker">Pulls straight from the evidence base. Cites its sources every time.</p>
         <h1 className="text-3xl mt-1">Ask the analyst</h1>
         <p className="text-ink-500 mt-2 leading-relaxed">
           Every answer is composed directly from stored Observations, Strategies, and Strategic Moves and carries real citations. If nothing in the

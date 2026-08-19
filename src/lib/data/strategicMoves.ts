@@ -46,7 +46,7 @@ export const strategicMoves: StrategicMove[] = [
     summary:
       "UPN announced Nutra Complete (freeze-dried food) and Nutra Thrive (daily supplement) would launch across 650 Pet Supplies Plus locations nationwide — its largest retail expansion to date at the time, and reportedly the first time Nutra Thrive had reached a physical retail shelf rather than DTC/e-commerce only.",
     whyItMatters:
-      "This is Golden's own move, included for context: it puts UPN on the exact retail shelf Zesty Paws already dominates (see Strategy: Comprehensive, Multi-Benefit Formulas) and is the reason the Zesty Paws pricing/positioning comparison in this app matters operationally, not just academically.",
+      "Golden's own move, included for context: it puts UPN on the exact retail shelf Zesty Paws already dominates (see Strategy: Comprehensive, Multi-Benefit Formulas) — which is why the Zesty Paws pricing and positioning comparison elsewhere is an operational question, not an academic one.",
     sourceUrl: "https://www.prnewswire.com/news-releases/ultimate-pet-nutrition-nutra-complete-and-nutra-thrive-launch-in-650-pet-supplies-plus-stores-302478617.html",
     sourceLabel: "PR Newswire",
     confidence: 95,
@@ -62,7 +62,7 @@ export const strategicMoves: StrategicMove[] = [
     summary:
       "Per Golden Pet Brands' own official \"About\" page: \"The brands launched direct-to-consumer, then entered retail through neighborhood and independent pet stores in 2021 and national pet specialty, including Petco, in 2026.\" Exact month not specified. This means none of Golden's three brands is DTC-only today — Dr. Marty Pets, Badlands Ranch, and Ultimate Pet Nutrition are all sold at Petco (and, per brand, also Amazon/Chewy).",
     whyItMatters:
-      "This directly reframes how to read every competitor DTC-to-retail move in this dataset (e.g. The Farmer's Dog's Walmart launch): Golden's own brands already made a comparable, deliberate, staged transition from DTC-only to national retail — this isn't a gap Golden needs to close, it's a transition Golden already executed.",
+      "This reframes how to read The Farmer's Dog's Walmart launch and moves like it: Golden's own brands already made a comparable, staged transition from DTC-only to national retail. It isn't a gap Golden needs to close — it's a transition Golden already made.",
     sourceUrl: "https://goldenpetbrands.com/about.html",
     sourceLabel: "goldenpetbrands.com (official About page)",
     confidence: 96,
