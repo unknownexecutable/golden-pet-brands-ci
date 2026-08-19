@@ -37,7 +37,7 @@ UI: Today / Brands / Competitors / Observations / Strategies / Products /
 - **Data layer**: `src/lib/data/*.ts` — typed, hand-verified records (see honesty contract). Structured so a Prisma-backed Postgres implementation could swap in behind the same shapes without touching a page or component.
 - **Scoring**: `src/lib/scoring.ts` — the Competitive Relevance Score and Observation Significance Score are both explainable, weighted sums, never a black-box number.
 - **AI Analyst**: `src/lib/ai/answer.ts` — deterministic retrieval + templated composition over the verified evidence base, not a call to an external LLM (no LLM API key is configured in this environment). Every answer cites real records; it says "I don't know" rather than guessing when nothing matches.
-- **Live refresh**: `src/app/api/refresh/route.ts` + the `/sources` page — a real server-side re-fetch of every connected brand website, with real HTTP status and content-hash drift detection, persisted to `.cache/source-health.json`. This is genuinely live, not simulated.
+- **Live refresh**: `src/app/api/refresh/route.ts` — a real server-side re-fetch of every connected brand website, with real HTTP status and content-hash drift detection. Triggered manually from the Today page or `/sources`, and automatically once a day via the Vercel Cron job in `vercel.json` (optionally secured with a `CRON_SECRET` env var). This is genuinely live, not simulated.
 
 ## MVP vs. Next vs. Later
 

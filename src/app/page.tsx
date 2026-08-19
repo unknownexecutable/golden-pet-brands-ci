@@ -8,6 +8,7 @@ import { PriorityBadge, GoldenBrandChip, RelevanceBadge } from "@/components/ui/
 import { WhyItMatters, ShowEvidence, SourceCite } from "@/components/ui/Evidence";
 import { Greeting } from "@/components/ui/Greeting";
 import { RefreshBar } from "@/components/ui/RefreshBar";
+import { ViewingDate } from "@/components/ui/ViewingDate";
 
 const CAPTURE_DATE = "August 19, 2026";
 
@@ -19,7 +20,9 @@ export default function TodayPage() {
   return (
     <div className="space-y-10">
       <section>
-        <p className="kicker">{CAPTURE_DATE} · Live snapshot</p>
+        <p className="kicker">
+          Facts verified {CAPTURE_DATE} <ViewingDate />
+        </p>
         <Greeting />
         <p className="mt-2 max-w-3xl text-ink-500 text-[15px] leading-relaxed">
           {high.length} high-priority findings and {moves.length} confirmed strategic moves are on record right now, drawn from{" "}

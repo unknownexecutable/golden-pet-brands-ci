@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import fs from "fs";
 import os from "os";
@@ -100,7 +100,7 @@ async function checkOne(s: (typeof sources)[number], cache: Record<string, Healt
   }
 }
 
-export async function POST() {
+async function runRefresh() {
   const targets = sources.filter((s) => s.type === "Brand Website");
   const cache = loadCache();
 
@@ -117,9 +117,24 @@ export async function POST() {
     // swallow — drift detection just resets on the next check
   }
 
-  return NextResponse.json({ checkedAt: new Date().toISOString(), results });
+  return { checkedAt: new Date().toISOString(), results };
 }
 
-export async function GET() {
-  return NextResponse.json({ cache: loadCache() });
+// Manual refresh — triggered by the "Refresh" button in the UI.
+export async function POST() {
+  return NextResponse.json(await runRefresh());
+}
+
+// Automatic daily refresh — triggered by the Vercel Cron job defined in
+// vercel.json (see the `crons` entry), which sends a GET request once a
+// day. If CRON_SECRET is set as an env var, Vercel signs the request with
+// it and we verify that here; without it configured, the endpoint stays
+// open (same graceful-fallback pattern as SITE_PASSWORD) so the daily
+// refresh works out of the box.
+export async function GET(req: NextRequest) {
+  const secret = process.env.CRON_SECRET;
+  if (secret && req.headers.get("authorization") !== `Bearer ${secret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  return NextResponse.json(await runRefresh());
 }

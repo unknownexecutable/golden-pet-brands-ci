@@ -17,5 +17,9 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|intro|api/auth|gpb-logo.svg).*)"]
+  // api/refresh is excluded too: Vercel Cron calls it once a day with no
+  // session cookie (it has its own optional CRON_SECRET check instead),
+  // and it doesn't expose or change anything sensitive — worst case a
+  // stranger triggers a redundant fetch of public competitor websites.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|intro|api/auth|api/refresh|gpb-logo.svg).*)"]
 };
