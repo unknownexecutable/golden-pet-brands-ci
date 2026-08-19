@@ -22,6 +22,7 @@ const SECONDARY = [
 
 export function Nav() {
   const pathname = usePathname();
+  if (pathname === "/intro") return null;
   return (
     <header className="sticky top-0 z-30 border-b border-ink-100 bg-paper/95 backdrop-blur">
       <div className="mx-auto max-w-[1400px] px-6">
