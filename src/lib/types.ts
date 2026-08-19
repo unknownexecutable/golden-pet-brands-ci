@@ -48,19 +48,39 @@ export type ChannelType =
 
 export type GoldenBrandId = "dr-marty" | "badlands-ranch" | "upn";
 
+export interface OfficialClaim {
+  text: string; // verbatim or near-verbatim phrase Golden itself uses
+  sourceUrl: string;
+  sourceLabel: string;
+}
+
+export interface BrandChampion {
+  name: string;
+  role: string; // exact official title, e.g. "Brand Champion, Dr. Marty Pets"
+}
+
 export interface GoldenBrand {
   id: GoldenBrandId;
   slug: string;
   name: string;
   shortName: string;
-  tagline: string;
+  tagline: string; // exact site <title> or hero copy, verbatim — see sourceUrl
   color: string;
+  // Our third-person analyst description — never phrased as a Golden quote.
   description: string;
   founded: string;
-  coreCustomer: string;
+  foundedNote?: string; // clarifies what the founding year actually refers to, when ambiguous
+  coreCustomer: string; // analyst read, not an official Golden statement
   priceTier: "Value" | "Premium" | "Super-Premium";
   distribution: string[];
-  positioningPillars: string[];
+  productLine: string[]; // real, named SKUs/sub-lines, verbatim from Golden
+  champions: BrandChampion[];
+  // Verbatim or near-verbatim claims Golden itself makes — always rendered
+  // in quotes with a citation, never blended with analyst interpretation.
+  officialClaims: OfficialClaim[];
+  // Our synthesized read of the brand's positioning — always rendered
+  // without quote marks and visually labeled as analysis, not a Golden statement.
+  analystPositioning: string[];
   categories: string[];
   pricingFacts: PricingFact[];
   sourceNote: string;
@@ -258,8 +278,12 @@ export interface Strategy {
 
 export interface StrategicMove {
   id: string;
-  competitorId: string | "upn" | "dr-marty" | "badlands-ranch"; // competitors or a Golden brand's own move, for "Golden vs Market" context
+  competitorId: string; // a Competitor id, or a nominal id like "golden-pet-brands" for corporate-level Golden moves
   isGoldenBrand: boolean;
+  // Which Golden brand(s) this move is actually relevant to — required when
+  // isGoldenBrand is true, since a corporate-level move (e.g. an acquisition)
+  // can affect all three brands, not just one.
+  relatedGoldenBrands?: GoldenBrandId[];
   title: string;
   eventDate: string; // real date of the announcement/event
   summary: string;

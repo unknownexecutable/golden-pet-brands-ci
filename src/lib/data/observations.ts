@@ -74,11 +74,11 @@ export const observations: Observation[] = [
     factors: { strategicRelevance: 30, distinctiveness: 22, goldenExposure: 22, evidenceStrength: 14 },
     confidence: 93,
     goldenRelevance: [
-      { brandId: "badlands-ranch", level: "High", rationale: "The category-defining premium-DTC fresh brand just proved that mass retail and premium DTC positioning can coexist — directly relevant as Badlands weighs further retail expansion." },
-      { brandId: "dr-marty", level: "Medium", rationale: "Dr. Marty remains the only major player still fully DTC-only in its category; this widens the gap between it and its closest positioning peers on distribution strategy." }
+      { brandId: "badlands-ranch", level: "High", rationale: "The category-defining premium-DTC fresh brand just proved that mass retail (Walmart) and premium DTC positioning can coexist — directly relevant as Badlands (already at Petco, Chewy, Amazon) weighs further retail expansion." },
+      { brandId: "dr-marty", level: "Medium", rationale: "Confirms the same DTC-to-retail pattern Dr. Marty's own parent company already followed — Golden Pet Brands' three brands moved from DTC into independent pet stores in 2021 and national pet specialty (Petco) in 2026, per goldenpetbrands.com." }
     ],
-    whyItMatters: "This is the single most concrete distribution-strategy move observed across all tracked competitors this year: the brand that arguably invented the modern premium-DTC fresh-food playbook has now broken from it entirely.",
-    suggestedAction: "Discuss whether Badlands Ranch's existing Chewy/Amazon presence should extend toward a similar large-format mass-retail partnership, and what it would mean for Dr. Marty's DTC-only model if this proves successful."
+    whyItMatters: "This is a concrete data point on a distribution pattern the whole category — including Golden's own brands — has already been moving through: DTC-first, then a deliberate, staged move into physical retail.",
+    suggestedAction: "Compare The Farmer's Dog's single-retailer (Walmart) approach against Golden's own multi-retailer 2021/2026 staged rollout (independents, then Petco) for lessons on sequencing."
   }),
   obs({
     id: "obs-nx-settlement",

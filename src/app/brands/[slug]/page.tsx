@@ -5,10 +5,20 @@ import { relationshipsForBrand } from "@/lib/data/relationships";
 import { getCompetitor } from "@/lib/data/competitors";
 import { observations } from "@/lib/data/observations";
 import { strategies } from "@/lib/data/strategies";
-import { strategicMoves } from "@/lib/data/strategicMoves";
+import { movesForGoldenBrand } from "@/lib/data/strategicMoves";
 import { narrativeTerritories } from "@/lib/data/narrative";
 import { RelevanceBadge, PriorityBadge } from "@/components/ui/Badges";
 import { RelevanceExplainer, SourceCite } from "@/components/ui/Evidence";
+
+function FoundedLine({ founded, foundedNote }: { founded: string; foundedNote?: string }) {
+  return (
+    <div className="card p-4">
+      <p className="kicker">Founded</p>
+      <p className="text-sm mt-1 text-ink-700">{founded}</p>
+      {foundedNote && <p className="text-xs text-ink-400 mt-1">{foundedNote}</p>}
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return goldenBrands.map((b) => ({ slug: b.slug }));
@@ -21,7 +31,7 @@ export default function BrandDetail({ params }: { params: { slug: string } }) {
   const rels = relationshipsForBrand(brand.id);
   const relevantObs = observations.filter((o) => o.goldenRelevance.some((g) => g.brandId === brand.id)).sort((a, b) => b.significance - a.significance);
   const relevantStrategies = strategies.filter((s) => s.goldenExposure.some((g) => g.brandId === brand.id));
-  const relevantMoves = strategicMoves.filter((m) => m.competitorId === brand.id || relevantObs.some((o) => o.competitorId === m.competitorId));
+  const relevantMoves = movesForGoldenBrand(brand.id).sort((a, b) => (a.eventDate < b.eventDate ? 1 : -1));
   const territoriesTouched = narrativeTerritories.filter((t) => t.occupants.some((o) => rels.some((r) => r.competitorId === o.competitorId)));
 
   return (
@@ -37,10 +47,7 @@ export default function BrandDetail({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="card p-4">
-          <p className="kicker">Core customer</p>
-          <p className="text-sm mt-1 text-ink-700">{brand.coreCustomer}</p>
-        </div>
+        <FoundedLine founded={brand.founded} foundedNote={brand.foundedNote} />
         <div className="card p-4">
           <p className="kicker">Price tier</p>
           <p className="text-sm mt-1 text-ink-700">{brand.priceTier}</p>
@@ -55,6 +62,37 @@ export default function BrandDetail({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
+      <div className="card p-4 bg-ink-50/60">
+        <p className="kicker">Analyst read — not an official Golden statement</p>
+        <p className="text-sm mt-1 text-ink-700">{brand.coreCustomer}</p>
+      </div>
+
+      {brand.champions.length > 0 && (
+        <section>
+          <h2 className="text-xl mb-3">Brand Champions</h2>
+          <p className="text-xs text-ink-400 mb-2">Official titles, per goldenpetbrands.com/leadership</p>
+          <div className="flex flex-wrap gap-3">
+            {brand.champions.map((c) => (
+              <div key={c.name} className="card px-4 py-3">
+                <p className="text-sm font-semibold text-ink-900">{c.name}</p>
+                <p className="text-xs text-ink-500">{c.role}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {brand.productLine.length > 0 && (
+        <section>
+          <h2 className="text-xl mb-3">Product line</h2>
+          <ul className="grid sm:grid-cols-2 gap-2">
+            {brand.productLine.map((p) => (
+              <li key={p} className="card px-4 py-2.5 text-sm text-ink-700">{p}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section>
         <h2 className="text-xl mb-3">Real, verified pricing</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -68,9 +106,25 @@ export default function BrandDetail({ params }: { params: { slug: string } }) {
       </section>
 
       <section>
-        <h2 className="text-xl mb-3">Positioning pillars</h2>
+        <h2 className="text-xl mb-3">What Golden actually says</h2>
+        <p className="text-xs text-ink-400 mb-2">Verbatim or near-verbatim — every claim below is quoted and cited, never paraphrased into a new claim.</p>
+        <div className="space-y-2">
+          {brand.officialClaims.map((c) => (
+            <div key={c.text} className="card p-4">
+              <blockquote className="text-sm text-ink-800 italic border-l-2 border-brass-300 pl-3">“{c.text}”</blockquote>
+              <div className="mt-2">
+                <SourceCite url={c.sourceUrl} label={c.sourceLabel} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-xl mb-3">Our positioning read</h2>
+        <p className="text-xs text-ink-400 mb-2">Analyst synthesis — our interpretation, not a Golden statement or quote.</p>
         <div className="flex flex-wrap gap-2">
-          {brand.positioningPillars.map((p) => (
+          {brand.analystPositioning.map((p) => (
             <span key={p} className="pill bg-ink-100 text-ink-700">{p}</span>
           ))}
         </div>
@@ -146,6 +200,27 @@ export default function BrandDetail({ params }: { params: { slug: string } }) {
                 </Link>
               );
             })}
+          </div>
+        </section>
+      )}
+
+      {relevantMoves.length > 0 && (
+        <section>
+          <h2 className="text-xl mb-3">Strategic moves touching {brand.shortName}</h2>
+          <div className="space-y-3">
+            {relevantMoves.map((m) => (
+              <div key={m.id} className="card p-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-ink-400">{m.eventDate}</span>
+                  {m.isGoldenBrand && <span className="pill bg-ink-900 text-white">Golden</span>}
+                </div>
+                <h3 className="text-[15px] font-semibold text-ink-900 mt-1">{m.title}</h3>
+                <p className="text-sm text-ink-600 mt-1">{m.summary}</p>
+                <div className="mt-2">
+                  <SourceCite url={m.sourceUrl} label={m.sourceLabel} />
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       )}

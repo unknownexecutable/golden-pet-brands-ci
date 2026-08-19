@@ -100,7 +100,7 @@ export const strategies: Strategy[] = [
     name: "Premium DTC Brands Are Testing Mass Retail",
     category: "Distribution",
     description:
-      "The Farmer's Dog — arguably the brand that defined the premium-DTC-subscription playbook for fresh pet food — broke from that model for the first time in 2026, launching on Walmart.com. This is the single clearest real distribution-strategy signal in the current dataset.",
+      "The Farmer's Dog — arguably the brand that defined the premium-DTC-subscription playbook for fresh pet food — broke from that model for the first time in 2026, launching on Walmart.com. Notably, Golden Pet Brands' own three brands already made a comparable transition: DTC-first, then independent pet stores in 2021, then national pet specialty (Petco) in 2026 (per goldenpetbrands.com/about.html) — so this is validation of a path Golden has already executed, not a gap Golden needs to close.",
     competitors: [
       { competitorId: "the-farmers-dog", emphasis: "Core Pillar", evidenceQuote: "\"The Farmer's Dog launches on Walmart.com with personalized meal plans\" — first retail partnership after a decade DTC-only, announced March 24, 2026.", sourceUrl: "https://www.petfoodindustry.com/news-newsletters/pet-food-news/news/15820583/the-farmers-dog-launches-on-walmartcom-with-personalized-meal-plans" }
     ],
@@ -108,11 +108,11 @@ export const strategies: Strategy[] = [
     confidence: 82,
     confidenceBand: "High",
     goldenExposure: [
-      { brandId: "badlands-ranch", level: "High", rationale: "Badlands already sells through Chewy and Amazon; this is real evidence that mass big-box retail is viable for a premium DTC-rooted brand without diluting the brand story." },
-      { brandId: "dr-marty", level: "Medium", rationale: "Dr. Marty remains the only major tracked brand still fully DTC-only — worth an explicit, deliberate decision on whether that stays a strength or becomes a growth ceiling." }
+      { brandId: "badlands-ranch", level: "Medium", rationale: "Badlands already sells through Petco, Chewy, and Amazon; this is corroborating evidence that mass retail is viable for a premium DTC-rooted brand without diluting the brand story — a path Badlands is already on, not one it's deciding whether to start." },
+      { brandId: "dr-marty", level: "Low", rationale: "Dr. Marty is already retail-present (Petco, Amazon) alongside its DTC site, per Golden's own official Our Brands page — this strategy is not a gap for Dr. Marty specifically." }
     ],
     analystNote:
-      "One real, well-documented data point — not yet a \"trend\" with multiple competitors, but a significant single mover worth tracking for a second example before calling this a category pattern."
+      "The more interesting comparison here isn't \"will Golden's DTC brands go to retail\" — they already have. It's whether Golden's staged 2021-independents / 2026-Petco sequencing was faster or slower than The Farmer's Dog's single-leap Walmart move, and what that implies for how UPN should sequence any further retail expansion beyond Pet Supplies Plus."
   }
 ];
 

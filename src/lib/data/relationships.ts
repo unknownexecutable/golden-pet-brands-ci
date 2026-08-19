@@ -69,7 +69,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Very similar willingness-to-pay and raw-feeding mindset.",
       price: "Both classified Super-Premium tier — the closest price-tier match among Dr. Marty's tracked competitors.",
       marketing: "ZIWI leans on ingredient percentage and NZ sourcing rather than clinical/vet authority.",
-      retail: "Available at Chewy/Amazon/specialty where Dr. Marty is absent.",
+      retail: "ZIWI adds Chewy and independent specialty on top of Amazon; Dr. Marty overlaps on Amazon and Petco but not Chewy or specialty.",
       search: "Some overlap in \"high meat content\" search terms."
     }
   }),
@@ -101,7 +101,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Instinct's retail buyer is more price-sensitive and less DTC/advertorial-driven than Dr. Marty's.",
       price: "Instinct's published freeze-dried range ($8.99–$24.99) sits well below Dr. Marty's Super-Premium tier — a Premium-tier, big-box-distributed product.",
       marketing: "Minimal advertorial or direct-response overlap; Instinct relies on retail merchandising.",
-      retail: "Deep big-box distribution Dr. Marty does not participate in.",
+      retail: "Instinct has deeper big-box distribution (PetSmart, Petco, Chewy, Amazon, grocery) than Dr. Marty's narrower Petco + Amazon footprint — both are retail-present, just at different scale.",
       search: "Limited keyword overlap outside the freeze-dried category term itself."
     }
   }),
@@ -117,7 +117,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Strong overlap in health-motivated, willing-to-subscribe owner segment.",
       price: "Both Super-Premium tier; The Farmer's Dog's published per-day cost ($6.81–$12.88) implies a materially higher monthly spend than Dr. Marty's per-bag pricing.",
       marketing: "Near-identical DTC funnel mechanics: quiz, subscription, vet-credibility content.",
-      retail: "The Farmer's Dog just added its first retail channel (Walmart.com, Apr 2026); Dr. Marty remains DTC-only.",
+      retail: "The Farmer's Dog just added its first-ever retail channel (Walmart.com, Apr 2026); Dr. Marty is already retail-present at Petco and Amazon alongside its own DTC site.",
       search: "Both compete for \"fresh dog food\" / \"healthier dog food\" search intent."
     }
   }),
@@ -134,7 +134,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Same mainstream premium buyer, both leaning on trust/clean-label rather than clinical framing.",
       price: "Both classified Premium tier with directly comparable first-order offers (Sundays: 30% off; Badlands: ~32% member pricing).",
       marketing: "Both run DTC subscription funnels with similar clean-ingredient messaging; Sundays currently makes a sharper direct price-vs-fresh argument.",
-      retail: "Sundays is in Target; Badlands is in Chewy/Amazon — adjacent but not identical shelf presence.",
+      retail: "Sundays is in Target; Badlands is in Petco, Chewy, and Amazon — adjacent but not identical shelf presence.",
       search: "High overlap on \"air-dried dog food\" search terms."
     }
   }),
@@ -150,7 +150,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "ZIWI's buyer skews more raw-feeding-committed and less mainstream than Badlands' celebrity-driven audience.",
       price: "ZIWI is Super-Premium tier vs. Badlands' Premium tier — a step above on price positioning.",
       marketing: "Different appeal: ingredient percentage vs. celebrity trust.",
-      retail: "Both sold at Chewy/Amazon.",
+      retail: "Both sold at Chewy and Amazon; ZIWI adds independent specialty, Badlands adds Petco.",
       search: "Moderate overlap on \"air-dried dog food\" queries."
     }
   }),
@@ -182,7 +182,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Overlaps on trust-seeking, mainstream-premium owners; Farmer's Dog skews more clinically framed.",
       price: "The Farmer's Dog is Super-Premium tier vs. Badlands' Premium tier — a meaningfully higher published per-day cost.",
       marketing: "Comparable funnel structure (quiz, plan, subscription).",
-      retail: "The Farmer's Dog just added Walmart.com; Badlands is already on Chewy/Amazon.",
+      retail: "The Farmer's Dog just added Walmart.com; Badlands is already on Petco, Chewy, and Amazon.",
       search: "Light keyword overlap."
     }
   }),
@@ -198,7 +198,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Comparable mainstream-premium household.",
       price: "Both Premium tier; Ollie's current 50%-off first-box offer is deeper than Badlands' standing member pricing.",
       marketing: "Similar quiz-driven personalization funnel; Ollie leans on quantified outcome statistics (e.g. \"75% see improvements within 30 days\").",
-      retail: "Neither in traditional retail.",
+      retail: "Ollie is DTC-only; Badlands Ranch is already at Petco, Chewy, and Amazon — a real distribution gap between the two, not a shared absence of retail.",
       search: "Minor overlap."
     }
   }),
@@ -214,7 +214,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Some overlap in ingredient-conscious mainstream buyers.",
       price: "Both classified Premium tier.",
       marketing: "Both message on clean, traceable ingredients; Open Farm backs it with named third-party certifications (OceanWise, Certified Humane, B Corp).",
-      retail: "Both at Chewy/Amazon.",
+      retail: "Both at Petco and Amazon; Badlands additionally at Chewy, Open Farm additionally at independent specialty.",
       search: "Minor overlap."
     }
   }),
@@ -231,7 +231,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Nearly identical DTC-acquired buyer profile.",
       price: "PetLab's published $25–$30/product with ~25% subscription savings sits close to Nutra Thrive's per-jar pricing before UPN's deeper volume tiers.",
       marketing: "PetLab's current tagline is explicitly \"no hyperbole, no unsupported health claims\" — a direct positioning contrast worth being aware of.",
-      retail: "PetLab's Walmart/Amazon presence exceeds UPN's current retail footprint.",
+      retail: "PetLab is at Amazon, Walmart, and Chewy; UPN is now comparably broad at Petco, Chewy, Amazon, and Pet Supplies Plus (~650 stores) — retail scale is closer between the two than the \"DTC vs. retail\" framing suggests.",
       search: "High overlap on \"dog joint supplement\" and \"dog probiotic\" terms."
     }
   }),
@@ -244,7 +244,7 @@ export const relationships: CompetitorRelationship[] = [
     searchOverlap: 5,
     rationale: {
       category: "Directly overlapping categories across joint, gut, multivitamin, and skin/coat.",
-      customer: "Zesty Paws skews more price-driven/retail-browsing vs. UPN's DTC-educated buyer, but converges as UPN enters retail.",
+      customer: "Zesty Paws skews more price-driven/retail-browsing vs. UPN's DTC-educated buyer, though the two increasingly converge now that UPN is broadly retail-present too.",
       price: "Zesty Paws is Value tier ($16.97–$42.97 published range) vs. UPN's Premium tier ($69.95/jar) — the clearest price-tier gap in this dataset.",
       marketing: "Zesty Paws relies on retail merchandising and its \"Led by Science\" tagline rather than direct-response video.",
       retail: "The single most relevant comparison for UPN's Pet Supplies Plus expansion — Zesty Paws already owns that shelf broadly.",
@@ -263,7 +263,7 @@ export const relationships: CompetitorRelationship[] = [
       customer: "Nutramax's buyer is more often vet-directed; UPN's is more self-directed via DTC content.",
       price: "Comparable Premium-tier pricing (Dasuquin $54.99–$59.99 vs. Nutra Thrive $69.95 one-time / lower per-unit when subscribed).",
       marketing: "Nutramax markets almost entirely on clinical evidence — the credibility bar UPN's vet-formulation claim is implicitly measured against, now complicated by Nutramax's 2026 settlement.",
-      retail: "Both at Chewy/Amazon; Nutramax's core channel is the vet clinic, which UPN does not have.",
+      retail: "Both at Chewy and Amazon; UPN adds Petco and Pet Supplies Plus, while Nutramax's core channel is the veterinary clinic, which UPN does not have.",
       search: "Moderate overlap on \"joint supplement for dogs\" queries."
     }
   }),
