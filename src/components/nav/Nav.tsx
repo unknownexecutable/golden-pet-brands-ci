@@ -27,12 +27,14 @@ export function Nav() {
     <header className="sticky top-0 z-30 border-b border-ink-100 bg-paper/95 backdrop-blur">
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="flex h-16 items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-ink-900 text-brass-200 font-display text-sm">G</span>
-            <div className="leading-tight">
-              <div className="font-display text-[15px] text-ink-900">Golden Pet Brands</div>
-              <div className="text-[11px] text-ink-400 -mt-0.5">Competitive Intelligence</div>
-            </div>
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/gpb-logo.svg" alt="Golden Pet Brands" className="h-7 w-auto" />
+            <span className="text-[11px] text-ink-400 leading-tight border-l border-ink-200 pl-3 hidden sm:block">
+              Competitive
+              <br />
+              Intelligence
+            </span>
           </Link>
           <nav className="hidden lg:flex items-center gap-1 overflow-x-auto scrollbar-thin">
             {PRIMARY.map((item) => {
