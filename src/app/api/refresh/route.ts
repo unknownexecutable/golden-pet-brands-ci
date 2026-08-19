@@ -1,21 +1,29 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import fs from "fs";
+import os from "os";
 import path from "path";
 import { sources } from "@/lib/data/sources";
 
 // Real, live server-side re-check of every "Brand Website" source. No
 // fabricated results: each source is actually fetched right now, its HTTP
 // status is reported as-is, and a content hash is compared against the last
-// check (persisted to .cache/source-health.json) to flag real drift. This
-// is the Tier 0 layer of the monitoring pipeline described in the Sources
-// page — it does NOT re-derive structured facts (that needs an LLM call,
-// which requires an API key this environment doesn't have configured; see
-// the Sources page for that explanation).
+// check (persisted to a cache file) to flag real drift. This is the Tier 0
+// layer of the monitoring pipeline described in the Sources page — it does
+// NOT re-derive structured facts (that needs an LLM call, which requires an
+// API key this environment doesn't have configured; see the Sources page
+// for that explanation).
+//
+// Cache location: serverless platforms (Vercel included) mount the deployed
+// project directory read-only and only allow writes to the OS temp dir, so
+// the cache lives under os.tmpdir(). That also means the cache is best-effort
+// and can reset between deployments or cold-starts on serverless — real
+// drift detection at scale belongs in a durable store (e.g. a small
+// Postgres/KV table), which is a documented Next step, not faked here.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const CACHE_PATH = path.join(process.cwd(), ".cache", "source-health.json");
+const CACHE_PATH = path.join(os.tmpdir(), "golden-pet-ci-source-health.json");
 
 interface HealthRecord {
   hash: string;
