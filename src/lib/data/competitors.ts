@@ -1,0 +1,250 @@
+import type { Competitor } from "@/lib/types";
+
+// All descriptions, hero headlines, and claims below were captured via a
+// live fetch of the competitor's own site (or, where a fetch was blocked —
+// noted per-record — a live web search of current trade/consumer coverage)
+// on the date in `capturedAt`. See the data-honesty contract in src/lib/types.ts.
+export const competitors: Competitor[] = [
+  {
+    id: "open-farm",
+    slug: "open-farm",
+    name: "Open Farm",
+    initials: "OF",
+    hq: "Toronto, ON",
+    founded: "2015",
+    website: "openfarmpet.com",
+    description:
+      "Fresh, freeze-dried raw, and kibble brand built on ingredient traceability. Live homepage hero reads \"Fuel their adventures,\" with supporting claims of \"100% traceable, ethically sourced recipes\" and third-party certifications (OceanWise, Certified Humane, B Corp). Running multiple simultaneous discount codes (up to 50% off select freeze-dried recipes) as of this capture.",
+    currentHeroHeadline: "Fuel their adventures",
+    priceTier: "Premium",
+    distribution: ["DTC", "Petco", "independent pet specialty", "Amazon"],
+    categories: ["Freeze-Dried Food", "Fresh / Gently Cooked", "Kibble - Premium"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched openfarmpet.com homepage.",
+    sourceUrl: "https://openfarmpet.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "the-farmers-dog",
+    slug: "the-farmers-dog",
+    name: "The Farmer's Dog",
+    initials: "FD",
+    hq: "New York, NY",
+    founded: "2016",
+    website: "thefarmersdog.com",
+    description:
+      "Fresh, gently-cooked, personalized dog food delivered via subscription — the category-defining DTC direct-response marketer. As of March 24, 2026, the brand announced its first-ever retail partnership: personalized meal plans launched on Walmart.com in April 2026, its first move beyond a pure DTC channel.",
+    priceTier: "Super-Premium",
+    distribution: ["DTC subscription", "Walmart.com (new, Apr 2026)"],
+    categories: ["Fresh / Gently Cooked"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Direct site fetch was blocked (403); pricing and retail-launch facts from live search of Petful, PetfoodIndustry, and PR Newswire coverage.",
+    sourceUrl: "https://www.petfoodindustry.com/news-newsletters/pet-food-news/news/15820583/the-farmers-dog-launches-on-walmartcom-with-personalized-meal-plans",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "sundays-for-dogs",
+    slug: "sundays-for-dogs",
+    name: "Sundays for Dogs",
+    initials: "SU",
+    hq: "New York, NY",
+    founded: "2020",
+    website: "sundaysfordogs.com",
+    description:
+      "Air-dried dog food positioned as a simpler, vet-founded alternative to both kibble and raw. Live homepage hero: \"Clean ingredients. Zero fine print.\" Claims 80%+ meat content and \"up to 55% less expensive than frozen fresh alternatives.\" Running a 30%-off-first-box offer and 14-day money-back guarantee as of this capture.",
+    currentHeroHeadline: "Clean ingredients. Zero fine print.",
+    priceTier: "Premium",
+    distribution: ["DTC subscription", "Target", "Chewy"],
+    categories: ["Air-Dried Food"],
+    tier: "Emerging Threat",
+    tierOverridden: false,
+    sourceNote: "Live-fetched sundaysfordogs.com homepage.",
+    sourceUrl: "https://sundaysfordogs.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "ziwi-peak",
+    slug: "ziwi-peak",
+    name: "ZIWI",
+    initials: "ZP",
+    hq: "Mount Maunganui, NZ",
+    founded: "2004",
+    website: "ziwipets.com",
+    description:
+      "New Zealand air-dried and freeze-dried raw food. Live homepage hero: \"Peak nutrition for pets from pure New Zealand.\" Claims minimal processing and cites an internal stat that \"4/5 pet parents see the difference in their pet's overall health & well-being.\" No fixed SKU pricing or promo codes were visible on the homepage at capture time.",
+    currentHeroHeadline: "Peak nutrition for pets from pure New Zealand",
+    priceTier: "Super-Premium",
+    distribution: ["DTC", "independent pet specialty", "Chewy", "Amazon"],
+    categories: ["Air-Dried Food", "Freeze-Dried Food"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched ziwipets.com homepage.",
+    sourceUrl: "https://ziwipets.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "stella-chewys",
+    slug: "stella-chewys",
+    name: "Stella & Chewy's",
+    initials: "SC",
+    hq: "Oak Creek, WI",
+    founded: "2003",
+    website: "stellaandchewys.com",
+    description:
+      "The deepest-retail-distribution freeze-dried brand and the most direct shelf competitor to Dr. Marty's category. At capture time the homepage was running a National Dog Day promotion (Aug 26 is National Dog Day): 25% off first order plus a free bundle, alongside always-on claims about nutrient preservation, digestibility, and joint support (natural glucosamine/chondroitin).",
+    currentHeroHeadline: "Happy National Dog Day! Treat them to the nutrition they deserve.",
+    priceTier: "Premium",
+    distribution: ["Petco", "PetSmart", "Chewy", "independent pet specialty", "DTC"],
+    categories: ["Freeze-Dried Food", "Raw Food", "Toppers"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched stellaandchewys.com homepage.",
+    sourceUrl: "https://www.stellaandchewys.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "instinct",
+    slug: "instinct",
+    name: "Instinct",
+    initials: "IN",
+    hq: "Lincoln, NE",
+    founded: "2002",
+    website: "instinctpetfood.com",
+    description:
+      "Raw-coated kibble and freeze-dried raw line under Nature's Variety / Mars Petcare. Live homepage claims \"Vet-Formulated Recipes,\" an \"Empty Bowl Guarantee,\" and positions itself as the \"#1 Category Leader in Raw Research\" via proprietary SafeRaw™ testing. Broad big-box distribution rather than DTC-first.",
+    currentHeroHeadline: "Feeding the unspoken bonds between pets, their people, & the planet",
+    priceTier: "Premium",
+    distribution: ["PetSmart", "Petco", "Chewy", "Amazon", "grocery"],
+    categories: ["Freeze-Dried Food", "Kibble - Premium", "Raw Food"],
+    tier: "Product-Specific",
+    tierOverridden: false,
+    sourceNote: "Live-fetched instinctpetfood.com homepage.",
+    sourceUrl: "https://www.instinctpetfood.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "honest-kitchen",
+    slug: "honest-kitchen",
+    name: "The Honest Kitchen",
+    initials: "HK",
+    hq: "San Diego, CA",
+    founded: "2002",
+    website: "thehonestkitchen.com",
+    description:
+      "The only major competitor with a certified human-grade claim (\"the first human grade pet food,\" est. 2002; made in a human food facility; B Corp certified). At capture time the site was running a time-boxed 20% sitewide discount (valid Aug 17–21) plus a standing 35%-off first subscription offer — an unusually deep, dated promotional stack for this brand.",
+    currentHeroHeadline: "The first human grade pet food",
+    priceTier: "Premium",
+    distribution: ["DTC", "Petco", "independent pet specialty", "Chewy"],
+    categories: ["Air-Dried Food", "Fresh / Gently Cooked", "Toppers"],
+    tier: "Secondary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched thehonestkitchen.com homepage.",
+    sourceUrl: "https://www.thehonestkitchen.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "ollie",
+    slug: "ollie",
+    name: "Ollie",
+    initials: "OL",
+    hq: "New York, NY",
+    founded: "2016",
+    website: "ollie.com",
+    description:
+      "Fresh, human-grade dog food subscription with a quiz-driven personalization funnel, closely comparable to The Farmer's Dog and to Badlands Ranch's DTC funnel. At capture time the homepage offer was an aggressive 50% off the first box plus a free puzzle and treats, alongside quantified outcome claims (\"75% of members see noticeable improvements... within 30 days\").",
+    currentHeroHeadline: "…isn't average. Their food shouldn't be either.",
+    priceTier: "Premium",
+    distribution: ["DTC subscription"],
+    categories: ["Fresh / Gently Cooked"],
+    tier: "Secondary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched ollie.com homepage (myollie.com redirects here).",
+    sourceUrl: "https://www.ollie.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "petlab-co",
+    slug: "petlab-co",
+    name: "PetLab Co.",
+    initials: "PL",
+    hq: "London, UK / New York, NY",
+    founded: "2019",
+    website: "thepetlabco.com",
+    description:
+      "High-velocity DTC supplement marketer (hip & joint chews, probiotics, dental) whose current homepage tagline is explicitly anti-hype: \"Just the science. No hyperbole. No unsupported health claims.\" Products run $25–$30 each with roughly 25% subscription savings. The closest direct-response funnel analog to UPN in the category.",
+    currentHeroHeadline: "Just the science. No hyperbole. No unsupported health claims.",
+    priceTier: "Premium",
+    distribution: ["DTC", "Amazon", "Walmart", "Chewy"],
+    categories: ["Joint Supplements", "Gut Health Supplements"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Direct fetch redirected to a client-rendered shop front that returned no content; positioning and pricing from live search of thepetlabco.com listings and Chewy.",
+    sourceUrl: "https://thepetlabco.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "zesty-paws",
+    slug: "zesty-paws",
+    name: "Zesty Paws",
+    initials: "ZE",
+    hq: "Scottsdale, AZ",
+    founded: "2016",
+    website: "zestypaws.com",
+    description:
+      "Retail-first supplement leader with the deepest big-box footprint of any competitor tracked here. Live homepage hero: \"Led by Science, Loved by Pets.\" NASC-certified and B Corp certified; products span immune, gut health, joint mobility, skin/coat, and behavior in one lineup. The most direct retail-shelf comparison for UPN's Pet Supplies Plus expansion.",
+    currentHeroHeadline: "Led by Science, Loved by Pets",
+    priceTier: "Value",
+    distribution: ["Costco", "Amazon", "Chewy", "Walmart", "Petco"],
+    categories: ["Joint Supplements", "Gut Health Supplements", "Multivitamin Supplements", "Skin & Coat Supplements"],
+    tier: "Primary",
+    tierOverridden: false,
+    sourceNote: "Live-fetched zestypaws.com homepage.",
+    sourceUrl: "https://www.zestypaws.com",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "nutramax",
+    slug: "nutramax",
+    name: "Nutramax (Cosequin / Dasuquin)",
+    initials: "NX",
+    hq: "Lancaster, SC",
+    founded: "1993",
+    website: "nutramaxlabs.com",
+    description:
+      "The incumbent vet-channel authority in joint supplements, marketed almost entirely on clinical-evidence and \"most vet-recommended\" claims. In 2026, Nutramax agreed to an $11.5 million class-action settlement over allegations it falsely marketed Cosequin's joint-health benefits — a real, material credibility event for the brand whose entire positioning rests on clinical authority.",
+    priceTier: "Premium",
+    distribution: ["Veterinary clinics", "Chewy", "Amazon", "Walmart"],
+    categories: ["Joint Supplements"],
+    tier: "Secondary",
+    tierOverridden: false,
+    sourceNote: "Direct site fetch blocked (403); settlement and pricing facts from live search of openclassactions.com, claimdepot.com, and VitaDog pricing comparisons.",
+    sourceUrl: "https://openclassactions.com/settlements/cosequin-joint-supplements-for-dogs-class-action-settlement.php",
+    capturedAt: "2026-08-19"
+  },
+  {
+    id: "fera-pet",
+    slug: "fera-pet",
+    name: "Fera Pets",
+    initials: "FP",
+    hq: "Los Angeles, CA",
+    founded: "2018",
+    website: "ferapets.com",
+    description:
+      "Vet-formulated supplement brand (joint, probiotic, mushroom, fiber) whose live homepage hero is \"Movement Made Easy,\" with a secondary \"Vet the Label\" transparency message crediting formulator Dr. Dulake and a blend of \"Eastern and Western\" ingredient philosophies. Emphasizes third-party testing with a public Certificate of Analysis lookup.",
+    currentHeroHeadline: "Movement Made Easy",
+    priceTier: "Premium",
+    distribution: ["DTC", "Amazon"],
+    categories: ["Gut Health Supplements", "Joint Supplements", "Skin & Coat Supplements"],
+    tier: "Emerging Threat",
+    tierOverridden: false,
+    sourceNote: "Live-fetched ferapets.com homepage (ferapetorganics.com and ferapet.com both redirect/resolve here).",
+    sourceUrl: "https://www.ferapets.com",
+    capturedAt: "2026-08-19"
+  }
+];
+
+export function getCompetitor(idOrSlug: string): Competitor | undefined {
+  return competitors.find((c) => c.id === idOrSlug || c.slug === idOrSlug);
+}
