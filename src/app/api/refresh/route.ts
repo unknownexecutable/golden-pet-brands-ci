@@ -22,6 +22,11 @@ import { sources } from "@/lib/data/sources";
 // Postgres/KV table), which is a documented Next step, not faked here.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+// The 12 target sites are fetched in parallel (see POST below) specifically
+// to stay well under serverless function time limits, but a few slow/blocked
+// hosts can still push the total close to the default 10s. Raise the cap
+// explicitly — safe on Hobby/Pro, capped by the platform if unsupported.
+export const maxDuration = 30;
 
 const CACHE_PATH = path.join(os.tmpdir(), "golden-pet-ci-source-health.json");
 
@@ -57,50 +62,61 @@ export interface RefreshResult {
   error?: string;
 }
 
+async function checkOne(s: (typeof sources)[number], cache: Record<string, HealthRecord>): Promise<RefreshResult> {
+  const checkedAt = new Date().toISOString();
+  try {
+    const res = await fetch(s.url, {
+      redirect: "follow",
+      signal: AbortSignal.timeout(8000),
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; GoldenPetBrandsCI/1.0; +internal-monitoring)" }
+    });
+    const text = await res.text();
+    const hash = crypto.createHash("sha256").update(text).digest("hex").slice(0, 16);
+    const prev = cache[s.id];
+    cache[s.id] = { hash, checkedAt, httpStatus: res.status };
+    return {
+      id: s.id,
+      competitorId: s.competitorId,
+      url: s.url,
+      ok: res.ok,
+      httpStatus: res.status,
+      bytes: text.length,
+      changedSincePrevious: prev ? prev.hash !== hash : null,
+      previousCheckedAt: prev?.checkedAt ?? null,
+      checkedAt
+    };
+  } catch (e) {
+    return {
+      id: s.id,
+      competitorId: s.competitorId,
+      url: s.url,
+      ok: false,
+      httpStatus: 0,
+      changedSincePrevious: null,
+      previousCheckedAt: cache[s.id]?.checkedAt ?? null,
+      checkedAt,
+      error: e instanceof Error ? e.message : String(e)
+    };
+  }
+}
+
 export async function POST() {
   const targets = sources.filter((s) => s.type === "Brand Website");
   const cache = loadCache();
-  const results: RefreshResult[] = [];
 
-  for (const s of targets) {
-    const checkedAt = new Date().toISOString();
-    try {
-      const res = await fetch(s.url, {
-        redirect: "follow",
-        signal: AbortSignal.timeout(12000),
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; GoldenPetBrandsCI/1.0; +internal-monitoring)" }
-      });
-      const text = await res.text();
-      const hash = crypto.createHash("sha256").update(text).digest("hex").slice(0, 16);
-      const prev = cache[s.id];
-      cache[s.id] = { hash, checkedAt, httpStatus: res.status };
-      results.push({
-        id: s.id,
-        competitorId: s.competitorId,
-        url: s.url,
-        ok: res.ok,
-        httpStatus: res.status,
-        bytes: text.length,
-        changedSincePrevious: prev ? prev.hash !== hash : null,
-        previousCheckedAt: prev?.checkedAt ?? null,
-        checkedAt
-      });
-    } catch (e) {
-      results.push({
-        id: s.id,
-        competitorId: s.competitorId,
-        url: s.url,
-        ok: false,
-        httpStatus: 0,
-        changedSincePrevious: null,
-        previousCheckedAt: cache[s.id]?.checkedAt ?? null,
-        checkedAt,
-        error: e instanceof Error ? e.message : String(e)
-      });
-    }
+  // Fetched in parallel — sequentially, 12 sites x an 8s timeout could take
+  // up to 96s and blow past serverless function limits; in parallel the
+  // whole batch takes roughly as long as the single slowest site.
+  const results = await Promise.all(targets.map((s) => checkOne(s, cache)));
+
+  // Best-effort: a cache-write failure shouldn't turn a successful batch of
+  // live checks into a 500 for the user.
+  try {
+    saveCache(cache);
+  } catch {
+    // swallow — drift detection just resets on the next check
   }
 
-  saveCache(cache);
   return NextResponse.json({ checkedAt: new Date().toISOString(), results });
 }
 
