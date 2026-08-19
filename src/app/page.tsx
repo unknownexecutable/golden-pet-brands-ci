@@ -6,6 +6,8 @@ import { relationshipsForBrand } from "@/lib/data/relationships";
 import { getCompetitor } from "@/lib/data/competitors";
 import { PriorityBadge, GoldenBrandChip, RelevanceBadge } from "@/components/ui/Badges";
 import { WhyItMatters, ShowEvidence, SourceCite } from "@/components/ui/Evidence";
+import { Greeting } from "@/components/ui/Greeting";
+import { RefreshBar } from "@/components/ui/RefreshBar";
 
 const CAPTURE_DATE = "August 19, 2026";
 
@@ -18,13 +20,15 @@ export default function TodayPage() {
     <div className="space-y-10">
       <section>
         <p className="kicker">{CAPTURE_DATE} · Live snapshot</p>
-        <h1 className="text-3xl md:text-4xl mt-1">Good morning.</h1>
+        <Greeting />
         <p className="mt-2 max-w-3xl text-ink-500 text-[15px] leading-relaxed">
           {high.length} high-priority findings and {moves.length} confirmed strategic moves are on record right now, drawn from{" "}
           {observations.length} verified, live-captured facts across {new Set(observations.map((o) => o.competitorId)).size} tracked competitors.
           Everything below links back to the exact page and date it was confirmed — this is a snapshot of what's true today, not a fabricated change feed.
         </p>
       </section>
+
+      <RefreshBar />
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {goldenBrands.map((b) => {
